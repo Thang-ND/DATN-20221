@@ -83,6 +83,7 @@ class PreprocessData():
         df['status'] = status
         df_obj = df.select_dtypes(['object'])
         df['price'] = df_obj.price.apply(lambda x: re.sub(r'\D', '', x).replace(' ', '').strip())
+        df['rom'] = df_obj.price.apply(lambda x: re.sub(r'\D', '', x))
         df.fillna('unknown', inplace=True)
         return df
 
@@ -103,3 +104,11 @@ class PreprocessData():
                     break
 
         return df 
+    
+    def preprocessInfo(self, df):
+        for i in range(len(df)):
+            for j in range(len(self.model)):
+                if df.loc[i, 'name'].upper().find(self.model[j]) != -1:
+                    df.loc[i, 'name'] = self.model[j]
+                    break
+        return df
