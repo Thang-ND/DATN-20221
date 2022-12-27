@@ -1,6 +1,4 @@
-from math import prod
 import time
-from attr import attrib
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import json
@@ -14,8 +12,10 @@ import time
 def crawl():
     data = []
     options = FirefoxOptions()
-    options.add_argument("--headless")
-    driver = webdriver.Firefox(options=options)
+    # options.add_argument("--headless")
+    # driver = webdriver.Firefox(options=options)
+
+    driver = webdriver.Firefox()
     urls = []
     products = []
     apple_categories = {
@@ -43,7 +43,7 @@ def crawl():
     for url in tqdm(urls):
         driver.get(url)
         try:
-            url_img = driver.find_element(By.XPATH, '//*[@id="divInfo"]/div[1]/div[1]/div/div[1]/div[1]/div/div[1]/div/div[1]/div/img').get_attribute('src')
+            url_img = 'unknown'
             list_rom = driver.find_element(By.XPATH, '//*[@id="form_order"]/div[2]')
             list_rom_a = list_rom.find_elements(By.TAG_NAME, 'a')
             list_rom_url = [L.get_attribute('href') for L in list_rom_a]
@@ -60,7 +60,7 @@ def crawl():
 
         for id, i in enumerate(list_rom_url):
             product = {}
-            print(i)
+
             rom = list_rom_data[id]
             link = None
             try:
@@ -69,6 +69,8 @@ def crawl():
                 else:
                     link = list_rom_url[id]
                     driver.get(link)
+                if 'javascript' in link:
+                    link = url
                 list_color = driver.find_element(By.CLASS_NAME, 'color-list-show')
                 # a_element = list_color.find_elements(By.TAG_NAME, 'a')
                 p_color_elements = list_color.find_elements(By.TAG_NAME, 'p')

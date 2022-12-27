@@ -41,8 +41,8 @@ def crawl():
                 c_elms = driver.find_elements(By.XPATH, '//span[@class="lo_text"]')
                 prices = [elm.get_attribute('innerHTML') for elm in p_elms]
                 roms = [elm.get_attribute('innerHTML') for elm in r_elms]
-                name = driver.find_element(By.XPATH, '//h1[@class="pull-left"]').get_attribute('innerHTML')
                 colors = [elm.get_attribute('innerHTML') for elm in c_elms]
+                name = driver.find_element(By.XPATH, '//h1[@class="pull-left"]').get_attribute('innerHTML')
 
                 for i in range(len(colors)):
                     for j in range(len(roms)):
@@ -53,7 +53,6 @@ def crawl():
                         product['link'] = url
                         product['price'] = prices[j]
                         product['color'] = colors[i]
-                       # print(product)
                         data.append(product)
             except Exception as e:
                 print(e)

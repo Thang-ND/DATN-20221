@@ -12,7 +12,6 @@ import time
 
 
 def crawl():
-    data = []
     options = FirefoxOptions()
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)

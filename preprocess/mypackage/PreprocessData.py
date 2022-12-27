@@ -41,14 +41,14 @@ class PreprocessData():
              "MACBOOK PRO M1 PRO", "MACBOOK AIR M1", "MACBOOK PRO", "MACBOOK AIR", "MAC MINI", "MAC STUDIO", "IPAD 2", "IPAD 3", "IPAD AIR", "IPAD MINI"]
 
         self.cpu = ["A16", "A15", "A14", "A13", "A12", "A11", "A10", "A9", "A8", "A7", "A6"]
-        self.color1 = ['Đen', 'Trắng', 'Tím', 'Đỏ', 'Xanh Lá', 'Xanh', 'Vàng', 'Xanh Dương', 'Than chì',
-            'Hồng', 'Bạc', 'Xanh rêu', 'JetBlack', 'Xám', 'Xanh dương', 'Cam', 'Da Xanh',
-            'Xanh Biển', 'Vàng hồng']
-        self.color2 = ['Black', 'White', 'Purple', 'Red', 'Blue', 'Green', 'Yellow', 'Blue', 'Graphite',
-                    'Pink', 'Silver', 'Moss Green', 'JetBlack', 'Gray', 'Blue', 'Orange', 'Blue Skin',
-                    'Sea Blue', 'Rose Gold']
-        self.rom = ["16GB", "32GB", "64GB", "128GB", "256GB", "512GB", "1TB", "16G", "32G", "64G", "128G", "256G", "512G", "1T"]
-        self.rom2 = ["16", "32", "64", "128", "256", "512", "1024","16", "32", "64", "128", "256", "512", "1024"]
+        self.color1 = ['ĐEN', 'TRẮNG', 'TÍM', 'ĐỎ', 'XANH LÁ', 'XANH', 'VÀNG', 'XANH DƯƠNG', 'THAN CHÌ',
+            'HỒNG', 'BẠC', 'XANH RÊU', 'JETBLACK', 'XÁM', 'XANH DƯƠNG', 'CAM', 'DA XANH',
+            'XANH BIỂN', 'VÀNG HỒNG']
+        self.color2 = ['BLACK', 'WHITE', 'PURPLE', 'RED', 'GREEN', 'BLUE', 'YELLOW', 'BLUE', 'GRAPHITE',
+                    'PINK', 'SILVER', 'MOSS GREEN', 'JETBLACK', 'GRAY', 'BLUE', 'ORANGE', 'BLUE SKIN',
+                    'SEA BLUE', 'ROSE GOLD']
+        self.rom = ["16GB", "32GB", "64GB", "128GB", "256GB", "512GB", "1TB", "16G", "32G", "64G", "128G", "256G", "512G", "1T", "1"]
+        self.rom2 = ["16", "32", "64", "128", "256", "512", "1024","16", "32", "64", "128", "256", "512", "1024", "1024"]
 
         self.mapping_Ram = {"IPHONE 14 MINI":6, "IPHONE 14 PRO MAX":6, "IPHONE 14 PRO":6, "IPHONE 14":6,"IPHONE 13 MINI":6, "IPHONE 13 PRO MAX":6, "IPHONE 13 PRO":6, "IPHONE 13":4, "IPHONE 12 MINI":4, "IPHONE 12 PRO MAX":6,
              "IPHONE 12 PRO":6, "IPHONE 12":4,
@@ -67,23 +67,23 @@ class PreprocessData():
                 if df.loc[i, 'name'].upper().find(self.model[j]) != -1:
                     df.loc[i, 'name'] = self.model[j]
                     break
-
-        
-            # for j in range(len(self.cpu)):
-            #     if df.loc[i, 'cpu'].find(self.cpu[j]) != 1:
-            #         df.loc[i, 'cpu'] = self.cpu[j]
-            #         break
-
-            for j in range(len(self.color1)):
-                if df.loc[i, 'color'] == self.color1[j]:
-                    df.loc[i, 'color'] = self.color2[j]
-                    break
-        
+            #df['color'].astype('object')
+        # try:
+        #     for j in range(len(self.color1)):
+        #         if df.loc[i, 'color'].upper() == self.color1[j]:
+        #             df.loc[i, 'color'] = self.color2[j]
+        #             break
+        # except Exception as e:
+        #     print(e)
         df['createdDate'] = self.timeNow
         df['status'] = status
-        df_obj = df.select_dtypes(['object'])
-        df['price'] = df_obj.price.apply(lambda x: re.sub(r'\D', '', x).replace(' ', '').strip())
-        df['rom'] = df_obj.price.apply(lambda x: re.sub(r'\D', '', x))
+        try:
+            df_obj = df.select_dtypes(['object'])
+            df['price'] = df_obj.price.apply(lambda x: re.sub(r'\D', '', x).replace(' ', '').strip())
+            df['rom'] = df_obj.rom.apply(lambda x: re.sub(r'\D', '', x))
+            df['color'] = df_obj.color.apply(lambda x: x.replace('\n', '').strip())
+        except Exception as e:
+            print(e)
         df.fillna('unknown', inplace=True)
         return df
 
@@ -112,3 +112,11 @@ class PreprocessData():
                     df.loc[i, 'name'] = self.model[j]
                     break
         return df
+    def preprocessColor(self, df):
+        for i in range(len(df)):
+            for j in range(len(self.color1)):
+                if df.loc[i, 'color'].upper() == self.color1[j]:
+                    df.loc[i, 'color'] = self.color2[j]
+                    break
+
+        return df 
