@@ -47,7 +47,7 @@ class MatchingSystem():
         
         return res
 
-    def matchedCol(result):
+    def matchedCol(self, result):
         matched_col = []
         source_col = []
         for key in result:
