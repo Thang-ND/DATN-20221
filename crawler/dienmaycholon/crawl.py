@@ -1,6 +1,4 @@
-from math import prod
 import time
-from attr import attrib
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import json
@@ -9,9 +7,6 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 
 if __name__ == '__main__':
-
-    today = time.gmtime()
-    date = '{}-{}-{}'.format(today.tm_year,today.tm_mon,today.tm_mday)
 
     options = FirefoxOptions()
     options.add_argument("--headless")
@@ -23,44 +18,53 @@ if __name__ == '__main__':
         'iphone': 'https://dienmaycholon.vn/dien-thoai-di-dong-apple'
     }
 
+
     for category in apple_categories:    
         driver.get(apple_categories[category])
-        items = driver.find_elements(By.CLASS_NAME, 'product')
+        try:
+            for i in range(2):
+                bt = driver.find_element(By.XPATH, '/html/body/div[1]/section/div[4]/div/div[2]/div[4]/div/div[2]/button')
+                bt.click()
+                time.sleep(1)
+        except Exception as e:
+            print(e)
+            pass
+        items = driver.find_elements(By.XPATH, '//div[@class="product"]/div[2]/a[1]')
         for item in items:
             urls.append(item.get_attribute('href'))
 
     for url in tqdm(urls):
         driver.get(url)
-    
-        color = []
-        price = []
 
-        for i in driver.find_elements(By.CLASS_NAME, 'size-pro'):
-            color.append(i.get_attribute('innerHTML'))
-        for i in driver.find_elements(By.CLASS_NAME, 'price-pro'):
-            price.append(i.get_attribute('innerHTML'))
+        sub_urls = driver.find_elements(By.XPATH, '//div[@class="many_size_pro"]/a')
+        sub_urls = [sub.get_attribute('href') for sub in sub_urls]
 
-        product = {}
-        name = driver.find_element(By.CLASS_NAME, 'name_pro_detail').find_element(By.TAG_NAME,'h1').get_attribute('innerHTML')
-        product['name'] = name
-        product['url'] = url
-        div = driver.find_element(By.CLASS_NAME, 'detail_specifications')
-        li = div.find_elements(By.TAG_NAME, 'li')
-        for item in li:
-            p = item.find_elements(By.TAG_NAME, 'p')
-            if (len(p)>0):
-                attribute = p[0].get_attribute('innerHTML')
-                value = p[1].get_attribute('innerHTML')
-                product[attribute] = value
+        for sub in sub_urls:
+            driver.get(sub)
+            color = []
+            price = []
 
-        for i in range(0,len(color)):
-            _product = product.copy()
-            _product['color'] = color[i]
-            _product['price'] = price[i]
-            _product['date'] = date
-            products.append(_product)
+            eles = driver.find_elements(By.XPATH, '//div[@class="many_size_pro"][2]/a')
+            list_sub_urls = [e.get_attribute('href') for e in eles]
+            for i in eles:
+                color.append(i.find_element(By.CLASS_NAME, 'size-pro').get_attribute('innerHTML'))
+            for i in eles:
+                price.append(i.find_element(By.CLASS_NAME, 'price-pro').get_attribute('innerHTML'))
 
-    with open('./Data.json', 'w') as f:
-        f.write(json.dumps(products))
-        f.close()
+            product = {}
+            name = driver.find_element(By.XPATH, '//div[@class="name_pro_detail"]/h1').get_attribute('innerHTML')
+            product['name'] = name
+            product['url'] = url
+
+            for i in range(len(color)):
+                product = {}
+                product['name'] = name
+                product['url'] = list_sub_urls[i]
+                product['color'] = color[i]
+                product['price'] = price[i]
+                print(product)
+                products.append(product)
+    # with open('./Data.json', 'w') as f:
+    #     f.write(json.dumps(products))
+    #     f.close()
     driver.quit()

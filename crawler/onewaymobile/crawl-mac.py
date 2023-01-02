@@ -51,7 +51,7 @@ if __name__ == '__main__':
                         colors.append(pairs[pair].get_attribute('innerHTML'))
                         prices.append(p_colors[pair].get_attribute('innerHTML'))
                     except Exception as e:
-                       continue
+                        continue
                 
                 for i in range(len(colors)):
                     product = {}    
@@ -63,7 +63,7 @@ if __name__ == '__main__':
                     product['color'] = colors[i]
                     product['price'] = prices[i]
                     product['info'] = data
-                   # print(product)
+                    # print(product)
                     products.append(product)
     # except Exception as e:
     #     print(e)
