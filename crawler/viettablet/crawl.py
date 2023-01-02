@@ -14,24 +14,22 @@ def crawl():
     options.add_argument("--headless")
     driver = webdriver.Firefox(options=options)
 
-    #driver = webdriver.Firefox()
     apple_categories = {
         'iphone': 'https://www.viettablet.com/iphone'
     }
     # for category in apple_categories:
     driver.get(apple_categories['iphone'])
     x_path = '//a[contains(@class, "more_load_page")]'
-    for i in range(10):
-        try:
+    try:
+        for i in range(10):
             button = driver.find_element(By.XPATH, x_path)
             if button is None:
                 break
             button.click()
-            print("*")
             time.sleep(2)
-        except Exception as e:
-            #print(e)
-            continue
+    except Exception as e:
+        #print(e)
+        pass
 
 
     items = driver.find_elements(By.XPATH,'//div[contains(@class, "product_list_column5")]/div/div[1]/a')
@@ -40,7 +38,6 @@ def crawl():
     for url in tqdm(urls):
         driver.get(url)
         try:
-
             url_img = 'unknown'
             name = driver.find_element(By.XPATH, '//*[@id="thong_tin_san_pham"]/div/div[2]/div/form/div/div/div[1]/h1') \
                 .get_attribute('innerHTML')
@@ -64,10 +61,10 @@ def crawl():
                 print(tmp)
         except Exception as e:
             continue
-        driver.quit()
+    driver.quit()
     return data
 if __name__ == '__main__':
-    print("start")
+    #print("start")
     data = crawl()
     with open('./data-iphone.json', 'w') as f:
         f.write(json.dumps(data))
