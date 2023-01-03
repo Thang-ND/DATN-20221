@@ -23,21 +23,23 @@ def crawl():
     }
     # for category in apple_categories:
     driver.get('https://shopdunk.com/iphone')
-    print("Waiting...")
     time.sleep(3)
 
     items = driver.find_elements(By.XPATH,'//div[@class="product-title"]/a')
     urls = [item.get_attribute("href") for item in items]
 
+
     for url in urls:
         #try:
             driver.get(url)
-            # sub_urls = driver.find_elements(By.XPATH,\
-            #      '//ul[contains(@class, "option-list")][@class,"darkcontrols"]/li/a')
-            #sub_urls = driver.find_elements(By.XPATH, '//div[@class="attributes"]/dl/dd[1]/ul/li/a')
-            sub_urls = driver.find_elements(By.XPATH, '//dd[contains(@id, "product_attribute_input_")]/li/a')
-            sub_urls = [sub.get_attribute('@href') for sub in sub_urls]
-            print(sub_urls)
+            sub_urls = driver.find_elements(By.CLASS_NAME,\
+                 'option-list.darkcontrols')
+            
+            # sub_urls = driver.find_elements(By.XPATH, '//div[@class="attributes"]/dl/dd[1]/ul/li/a')
+            # sub_urls = driver.find_elements(By.XPATH, '//dd[contains(@id, "product_attribute_input_")]/li/a')
+            # sub_urls = [sub.get_attribute('@href') for sub in sub_urls]
+            print(len(sub_urls))
+            break
             # for sub in sub_urls:
             #     print("=============")
             #     print(sub)

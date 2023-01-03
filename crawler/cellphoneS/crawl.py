@@ -4,11 +4,12 @@ import json
 from tqdm import tqdm
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from json import dumps
-# import schedule
+import time
 import re
 
 
-def crawl(destination):
+def crawl():
+    destination = 'https://cellphones.com.vn/mobile/apple.html'
     data = []
     options = FirefoxOptions()
     options.add_argument("--headless")
@@ -16,91 +17,58 @@ def crawl(destination):
     # for category in apple_categories:
     urls = []
     driver.get(destination)
-    # time.sleep(2)
-    x_path = '//*[@id="__layout"]/div/div[3]/div[2]/div[1]/div[4]/div/div[1]/div[2]/a'
+    x_path = '/html/body/div[1]/div/div/div[3]/div[2]/div/div[4]/div[5]/div/div[2]/a'
     try:
-        for i in range(1):
+        for i in range(2):
             print("*")
             button = driver.find_element(By.XPATH, x_path)
-            if button is None:
-                break
             button.click()
-            # time.sleep(5)
+            time.sleep(2)
     except Exception as e: 
         pass
 
 
 
-    items = driver.find_elements(By.XPATH, '//*[@id="__layout"]/div/div[3]/div[2]/div[1]/div[3]/div[5]/div/div[1]/div/div/a')
+    items = driver.find_elements(By.XPATH, '//div[@class="product-info"]/a')
     for i in items:
         urls.append(i.get_attribute('href'))
-    # print(len(urls))
-    # print(urls)
+
 
     for url in tqdm(urls):
-        driver.get(url)
-        print('get url detail')
-        # time.sleep(2)
-   #     try:
-        list_blocks = driver.find_elements(By.XPATH, '//*[@id="__layout"]/div/div[3]/div[2]/div/section/div/div[2]/div[2]/div[2]/div/a')
-        list_link = [link.get_attribute('href') for link in list_blocks]
+        try:
+            sub_urls = []
+            while(len(sub_urls)==0):
+                driver.get(url)
+                time.sleep(2)
+                sub_urls = driver.find_elements(By.XPATH, '//div[@class="list-linked"]/a')
+                sub_urls = [sub.get_attribute('href') for sub in sub_urls]
+                #print(sub_urls)
 
-        for link in list_link:
-            flag = True
-            while(flag):
-                try:
-                    driver.get(link)
+            for sub in sub_urls:
+                driver.get(sub)
+                name = driver.find_element(By.XPATH, '//div[@class="box-product-name"]/h1').get_attribute('innerHTML')
+                listObject = driver.find_elements(By.XPATH, '//ul[@class="list-variants"]/li')
+                colors = [e.find_element(By.TAG_NAME, 'strong').get_attribute('innerHTML') for e in listObject]
+                prices = [e.find_element(By.TAG_NAME, 'span').get_attribute('innerHTML') for e in listObject]
 
-                    print('get url link 3')
-                    # time.sleep(2)
-                    name = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div[3]/div[2]/div/section/div/div[1]/div[1]/h1').get_attribute('innerHTML')
-                    lists = driver.find_elements(By.XPATH, '//*[@id="__layout"]/div/div[3]/div[2]/div/section/div/div[2]/div[2]/div[3]/div[2]/ul/li/a/div')
-                    colors = [l.find_element(By.TAG_NAME, 'strong').get_attribute('innerHTML') for l in lists]
-                    prices = [l.find_element(By.TAG_NAME, 'span').get_attribute('innerHTML') for l in lists]
-                    url_img = driver.find_element(By.XPATH, '//*[@id="__layout"]/div/div[3]/div[2]/div/section/div/div[2]/div[1]/div/div[1]/div[1]/div[1]/div[1]/div/img').get_attribute('src')
-                    for i in range(len(colors)):
-                        tmp = {}
-                        tmp['color'] = str(colors[i])
-                        tmp['name'] = str(name)
-                        tmp['rom'] = 'unknown'
-                        tmp['ram'] = 'unknown'
-                        if url_img is None:
-                            url_img = 'unknown'
-                        tmp['url_img'] = str(url_img)
-                        tmp['price'] = str(re.sub(r'\D', '', prices[i]))
-                        print(tmp)
-                        data.append(tmp)
-                    flag = False
-                except Exception as e:
-                    print("Retry")
-                    pass
+
+                for i in range(len(colors)):
+                    product = {}
+                    product['name'] = name
+                    product['color'] = colors[i]
+                    product['price'] = prices[i]
+                    product['url'] = sub
+                    #print(product)
+                    data.append(product)
+            break
+        except Exception as e:
+            continue
+
 
     driver.quit()
     return data
 if __name__ == '__main__':
-    print("start")
-    flag = True
-    data = []
-
-    apple_categories = {
-        'iphone': 'https://cellphones.com.vn/mobile/apple.html'
-      
-    }   
-    for cat in apple_categories:
-        tmp = None
-        url = apple_categories[cat]
-        print(url)
-        # while(flag):
-        #     try:
-        #         tmp = crawl(url)
-        #         flag = False
-                
-        #     except Exception as e: 
-        #         print("Retry job crawler")
-        #         pass
-        tmp = crawl(apple_categories['iphone'])
-        data.append(tmp)
-
+    data = crawl()
 
     with open('./data.json', 'w') as f:
         f.write(json.dumps(data))
