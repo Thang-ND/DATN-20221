@@ -7,6 +7,8 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from tqdm import tqdm
 import datetime
 import os
+from kafka import KafkaConsumer
+from kafka import KafkaProducer
 
 class Store24h(Crawler):
     def __init__(self, source):
@@ -14,6 +16,8 @@ class Store24h(Crawler):
         #print(self.source)
         self.data = []
         self.filename = datetime.date.today().strftime(self.source+"%Y%m%d.json")
+        self.producer =  KafkaProducer(bootstrap_servers=['localhost:9092'], \
+                             value_serializer=lambda x: json.dumps(x).encode('utf-8'))
 
     def crawl(self):
         options = FirefoxOptions()
@@ -57,15 +61,23 @@ class Store24h(Crawler):
                             product['link'] = url
                             product['price'] = prices[j]
                             product['color'] = colors[i]
+                            self.producer.send(self.source, value=product)
                             self.data.append(product)
                 except Exception as e:
                     print(e)
                     continue
         driver.quit()
+        return self.data
 
 
     def saveDataToLocalFile(self):
-        path = os.path.join(os.getcwd(), 'data/', self.source, self.filename)
+        path = os.path.join(os.getcwd(), 'data/raw_data/', self.source, self.filename)
         with open(path, 'w') as f:
             f.write(json.dumps(self.data))
             f.close()
+    def saveDataToLocalFile2(self, df):
+        path = os.path.join(os.getcwd(), 'data/raw_data/', self.source, self.filename)
+        with open(path, 'w') as f:
+            f.write(json.dumps(df))
+            f.close()
+        return path 

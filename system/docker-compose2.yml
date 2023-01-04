@@ -1,0 +1,100 @@
+# version: "3"
+
+# services:
+#   zookeeper:
+#     image: docker.io/bitnami/zookeeper:3.8
+#     container_name: zookeeper
+#     ports:
+#       - "2181:2181"
+#     environment:
+#       - ALLOW_ANONYMOUS_LOGIN=yes
+#     volumes:
+#       - zookeeper_data1:/bitnami/zookeeper
+#   kafka-0:
+#     image: docker.io/bitnami/kafka:3.3
+#     container_name: kafka0
+#     ports:
+#       - 9092:9092
+#     environment:
+#       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+#       - KAFKA_CFG_BROKER_ID=0
+#       - ALLOW_PLAINTEXT_LISTENER=yes
+#       - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+#     volumes:
+#       - kafka0_data:/bitnami/kafka
+#     depends_on:
+#       - zookeeper
+#   kafka-1:
+#     image: docker.io/bitnami/kafka:3.3
+#     container_name: kafka1
+#     ports:
+#       - 9093:9092
+#     environment:
+#       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+#       - KAFKA_CFG_BROKER_ID=1
+#       - ALLOW_PLAINTEXT_LISTENER=yes
+#       - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+#     volumes:
+#       - kafka1_data:/bitnami/kafka
+#     depends_on:
+#       - zookeeper
+#   kafka-2:
+#     image: docker.io/bitnami/kafka:3.3
+#     container_name: kafka2
+#     ports:
+#       - 9094:9092
+#     environment:
+#       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+#       - KAFKA_CFG_BROKER_ID=2
+#       - ALLOW_PLAINTEXT_LISTENER=yes
+#       - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+#     volumes:
+#       - kafka2_data:/bitnami/kafka
+#     depends_on:
+#       - zookeeper
+
+# volumes:
+#   zookeeper_data1:
+#     driver: local
+#   kafka0_data:
+#     driver: local
+#   kafka1_data:
+#     driver: local
+#   kafka2_data:
+#     driver: local
+
+version: "3"
+services:
+  zookeeper:
+    image: 'bitnami/zookeeper:3.8'
+    container_name: zookeeper
+    ports:
+      - '2181:2181'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    volumes:
+      - zookeeper_data:/home/thangnd/kafka/zookeeper_data
+  kafka:
+    image: 'bitnami/kafka:3.3'
+    container_name: kafka0
+    ports:
+      - '9092:9092'
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+    volumes:
+      - kafka_data:/home/thangnd/kafka/kafka_data
+    depends_on:
+      - zookeeper
+
+volumes:
+  zookeeper_data:
+    external: true
+  kafka_data:
+    external: true
+  
+
