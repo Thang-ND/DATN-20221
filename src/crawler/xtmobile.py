@@ -8,13 +8,23 @@ from tqdm import tqdm
 import datetime
 import os
 import re
+from kafka import KafkaConsumer
+from kafka import KafkaProducer
+
 
 class Xtmobile(Crawler):
     def __init__(self, source):
         super().__init__(source)
-        #print(self.source)
         self.data = []
         self.filename = datetime.date.today().strftime(self.source+"%Y%m%d.json")
+        self.producer =  KafkaProducer(bootstrap_servers=['127.0.0.1:9092'], \
+                        value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+
+        self.consumer = KafkaConsumer(self.source,bootstrap_servers=['127.0.0.1:9092'], \
+            auto_offset_reset='earliest', \
+            enable_auto_commit=True,\
+            group_id='hust-0',consumer_timeout_ms=10000,\
+            value_deserializer=lambda x: json.loads(x.decode('utf-8')))
 
     def crawl(self):
         data = []
@@ -90,16 +100,24 @@ class Xtmobile(Crawler):
                         tmp['name'] = name
                         tmp['rom'] = rom
                         tmp['url_img'] = url_img
+                        self.producer.send(self.source, tmp)
                         data.append(tmp)
             except Exception as e:
                 url_img = 'unknown'
                 continue
         self.data = data
         driver.quit()
-        return data
+        #return data
 
     def saveDataToLocalFile(self):
         path = os.path.join(os.getcwd(), 'data/', self.source, self.filename)
         with open(path, 'w') as f:
             f.write(json.dumps(self.data))
             f.close()
+            
+    def getMessageFromKafka(self):
+        data = []
+        for message in self.consumer:
+            data.append(message.value)
+        return data           
+

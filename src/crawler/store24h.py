@@ -6,18 +6,26 @@ import json
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from tqdm import tqdm
 import datetime
+from datetime import date
 import os
 from kafka import KafkaConsumer
 from kafka import KafkaProducer
+
 
 class Store24h(Crawler):
     def __init__(self, source):
         super().__init__(source)
         #print(self.source)
         self.data = []
-        self.filename = datetime.date.today().strftime(self.source+"%Y%m%d.json")
-        self.producer =  KafkaProducer(bootstrap_servers=['localhost:9092'], \
+        self.filename = date.today().strftime(self.source+"%Y%m%d.json")
+        self.producer =  KafkaProducer(bootstrap_servers=['127.0.0.1:9092'], \
                              value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+
+        self.consumer = KafkaConsumer(self.source,bootstrap_servers=['127.0.0.1:9092'], \
+            auto_offset_reset='earliest', \
+            enable_auto_commit=True,\
+            group_id='hust-0',consumer_timeout_ms=10000,\
+            value_deserializer=lambda x: json.loads(x.decode('utf-8')))
 
     def crawl(self):
         options = FirefoxOptions()
@@ -62,12 +70,12 @@ class Store24h(Crawler):
                             product['price'] = prices[j]
                             product['color'] = colors[i]
                             self.producer.send(self.source, value=product)
-                            self.data.append(product)
+                            #self.data.append(product)
                 except Exception as e:
                     print(e)
                     continue
         driver.quit()
-        return self.data
+        #return self.data
 
 
     def saveDataToLocalFile(self):
@@ -81,3 +89,8 @@ class Store24h(Crawler):
             f.write(json.dumps(df))
             f.close()
         return path 
+    def getMessageFromKafka(self):
+        data = []
+        for message in self.consumer:
+            data.append(message.value)
+        return data

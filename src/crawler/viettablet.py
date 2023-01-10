@@ -7,6 +7,8 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from tqdm import tqdm
 import datetime
 import os
+from kafka import KafkaConsumer
+from kafka import KafkaProducer
 
 class Viettablet(Crawler):
     def __init__(self, source):
@@ -14,6 +16,14 @@ class Viettablet(Crawler):
         #print(self.source)
         self.data = []
         self.filename = datetime.date.today().strftime(self.source+"%Y%m%d.json")
+        self.producer =  KafkaProducer(bootstrap_servers=['127.0.0.1:9092'], \
+                value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+
+        self.consumer = KafkaConsumer(self.source,bootstrap_servers=['127.0.0.1:9092'], \
+            auto_offset_reset='earliest', \
+            enable_auto_commit=True,\
+            group_id='hust-0',consumer_timeout_ms=10000,\
+            value_deserializer=lambda x: json.loads(x.decode('utf-8')))
 
     def crawl(self):
         data = []
@@ -64,12 +74,13 @@ class Viettablet(Crawler):
                     tmp['name'] = name
                     tmp['rom'] = "unknown"
                     tmp['url_img'] = url_img
+                    self.producer.send(self.source, tmp)
                     data.append(tmp)
                     #print(tmp)
             except Exception as e:
                 continue
         driver.quit()
-        return data
+        #return data
 
 
     def saveDataToLocalFile(self):
@@ -77,3 +88,8 @@ class Viettablet(Crawler):
         with open(path, 'w') as f:
             f.write(json.dumps(self.data))
             f.close()
+    def getMessageFromKafka(self):
+        data = []
+        for message in self.consumer:
+            data.append(message.value)
+        return data        

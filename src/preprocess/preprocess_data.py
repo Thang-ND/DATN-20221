@@ -67,20 +67,13 @@ class PreprocessData():
                 if df.loc[i, 'name'].upper().find(self.model[j]) != -1:
                     df.loc[i, 'name'] = self.model[j]
                     break
-            #df['color'].astype('object')
-        # try:
-        #     for j in range(len(self.color1)):
-        #         if df.loc[i, 'color'].upper() == self.color1[j]:
-        #             df.loc[i, 'color'] = self.color2[j]
-        #             break
-        # except Exception as e:
-        #     print(e)
+
         df['createdDate'] = self.timeNow
         df['status'] = status
         try:
             df_obj = df.select_dtypes(['object'])
             df['price'] = df_obj.price.apply(lambda x: re.sub(r'\D', '', x).replace(' ', '').strip())
-            df['rom'] = df_obj.rom.apply(lambda x: re.sub(r'\D', '', x))
+            df['rom'] = df_obj.rom.apply(lambda x: re.sub(r'\D', '', x).strip())
             df['color'] = df_obj.color.apply(lambda x: x.replace('\n', '').strip())
         except Exception as e:
             print(e)

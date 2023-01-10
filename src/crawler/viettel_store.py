@@ -6,17 +6,32 @@ import json
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from tqdm import tqdm
 import datetime
+from datetime import date
 import os
 import re
+from kafka import KafkaConsumer
+from kafka import KafkaProducer
+
 
 class ViettelStore(Crawler):
     def __init__(self, source):
         super().__init__(source)
         #print(self.source)
         self.data = []
-        self.filename = datetime.date.today().strftime(self.source+"%Y%m%d.json")
+        self.filename = date.today().strftime(self.source+"%Y%m%d.json")
+        self.url = 'https://viettelstore.vn/dtdd-apple-iphone?utm_source=website&utm_medium=sis'
 
-    def crawl(self, destination):
+        self.producer =  KafkaProducer(bootstrap_servers=['127.0.0.1:9092'], \
+                        value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+
+        self.consumer = KafkaConsumer(self.source,bootstrap_servers=['127.0.0.1:9092'], \
+            auto_offset_reset='earliest', \
+            enable_auto_commit=True,\
+            group_id='hust-0',consumer_timeout_ms=10000,\
+            value_deserializer=lambda x: json.loads(x.decode('utf-8')))
+
+    def crawl(self):
+        destination = self.url
         data = []
         options = FirefoxOptions()
         options.add_argument("--headless")
@@ -73,17 +88,23 @@ class ViettelStore(Crawler):
                         tmp['url_img'] = url_img
                         pre_price = prices[i].split('<')[0]
                         tmp['price'] = re.sub(r'\D', '', pre_price)
+                        self.producer.send(self.source, tmp)
                         #print(tmp)
                         data.append(tmp)
             except Exception as e:
-
                 print(e)
                 continue
         driver.quit()
-        return data
+        #return data
 
     def saveDataToLocalFile(self):
         path = os.path.join(os.getcwd(), 'data/', self.source, self.filename)
         with open(path, 'w') as f:
             f.write(json.dumps(self.data))
             f.close()
+
+    def getMessageFromKafka(self):
+        data = []
+        for message in self.consumer:
+            data.append(message.value)
+        return data           

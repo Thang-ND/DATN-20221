@@ -60,7 +60,6 @@ def crawl():
                     product['url'] = sub
                     #print(product)
                     data.append(product)
-            break
         except Exception as e:
             continue
 

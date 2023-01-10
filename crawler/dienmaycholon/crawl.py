@@ -18,17 +18,16 @@ if __name__ == '__main__':
         'iphone': 'https://dienmaycholon.vn/dien-thoai-di-dong-apple'
     }
 
-
     for category in apple_categories:    
         driver.get(apple_categories[category])
-        try:
-            for i in range(2):
-                bt = driver.find_element(By.XPATH, '/html/body/div[1]/section/div[4]/div/div[2]/div[4]/div/div[2]/button')
-                bt.click()
-                time.sleep(1)
-        except Exception as e:
-            print(e)
-            pass
+        # try:
+        #     for i in range(2):
+        #         bt = driver.find_element(By.XPATH, '/html/body/div[1]/section/div[4]/div/div[2]/div[4]/div/div[2]/button')
+        #         bt.click()
+        #         time.sleep(1)
+        # except Exception as e:
+        #     print(e)
+        #     continue
         items = driver.find_elements(By.XPATH, '//div[@class="product"]/div[2]/a[1]')
         for item in items:
             urls.append(item.get_attribute('href'))
@@ -64,7 +63,7 @@ if __name__ == '__main__':
                 product['price'] = price[i]
                 print(product)
                 products.append(product)
-    # with open('./Data.json', 'w') as f:
-    #     f.write(json.dumps(products))
-    #     f.close()
+    with open('./Data.json', 'w') as f:
+        f.write(json.dumps(products))
+        f.close()
     driver.quit()
