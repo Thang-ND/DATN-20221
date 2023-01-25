@@ -7,6 +7,8 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from tqdm import tqdm
 import datetime
 import os
+from kafka import KafkaConsumer
+from kafka import KafkaProducer
 
 class DienMayChoLon(Crawler):
     def __init__(self, source):
@@ -14,6 +16,14 @@ class DienMayChoLon(Crawler):
         #print(self.source)
         self.data = []
         self.filename = datetime.date.today().strftime(self.source+"%Y%m%d.json")
+        self.producer =  KafkaProducer(bootstrap_servers=['127.0.0.1:9092'], \
+                             value_serializer=lambda x: json.dumps(x).encode('utf-8'))
+
+        self.consumer = KafkaConsumer(self.source,bootstrap_servers=['127.0.0.1:9092'], \
+            auto_offset_reset='earliest', \
+            enable_auto_commit=True,\
+            group_id='hust-0',consumer_timeout_ms=10000,\
+            value_deserializer=lambda x: json.loads(x.decode('utf-8')))
 
     def crawl(self):
         options = FirefoxOptions()
@@ -29,14 +39,14 @@ class DienMayChoLon(Crawler):
 
         for category in apple_categories:    
             driver.get(apple_categories[category])
-            try:
-                for i in range(2):
-                    bt = driver.find_element(By.XPATH, '/html/body/div[1]/section/div[4]/div/div[2]/div[4]/div/div[2]/button')
-                    bt.click()
-                    time.sleep(1)
-            except Exception as e:
-                print(e)
-                pass
+            # try:
+            #     for i in range(2):
+            #         bt = driver.find_element(By.XPATH, '/html/body/div[1]/section/div[4]/div/div[2]/div[4]/div/div[2]/button')
+            #         bt.click()
+            #         time.sleep(1)
+            # except Exception as e:
+            #     print(e)
+            #     pass
             items = driver.find_elements(By.XPATH, '//div[@class="product"]/div[2]/a[1]')
             for item in items:
                 urls.append(item.get_attribute('href'))
@@ -71,12 +81,13 @@ class DienMayChoLon(Crawler):
                         product['url'] = list_sub_urls[i]
                         product['color'] = color[i]
                         product['price'] = price[i]
-                        print(product)
+                        #print(product)
+                        self.producer.send(self.source, product)
                         products.append(product)
             except Exception as e:
                 continue
         driver.quit()
-        return products
+        #return products
 
 
     def saveDataToLocalFile(self):
@@ -84,3 +95,9 @@ class DienMayChoLon(Crawler):
         with open(path, 'w') as f:
             f.write(json.dumps(self.data))
             f.close()
+
+    def getMessageFromKafka(self):
+        data = []
+        for message in self.consumer:
+            data.append(message.value)
+        return data

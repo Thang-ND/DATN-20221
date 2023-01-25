@@ -17,11 +17,11 @@ def ingestData(file_path, collection, database):
 if __name__ == '__main__':
     print("Ingest products dataset into MongoDb Atlas Cloud")
     print("......")
-    ingestData("./products.json", "Test", "Apple")
+    ingestData("./products.json", "Products", "Apple")
     print("Done")
 
-    # print("=======================================")
-    # print("Ingest search dataset into MongoDb Atlas Cloud")
-    # print("......")
-    # ingestData("./search.json", "Product_Search", "Apple")
-    # print("Done")
+    print("=======================================")
+    print("Ingest search dataset into MongoDb Atlas Cloud")
+    print("......")
+    ingestData("./search.json", "Product_Search", "Apple")
+    print("Done")

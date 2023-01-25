@@ -8,6 +8,7 @@ import json
 from datetime import date
 import re
 from matching.matching_system import MatchingSystem
+from matching.data_matching import DataMatching
 from crawler.cellphoneS import CellphoneS
 
 
@@ -17,14 +18,13 @@ if __name__ == '__main__':
 
     matchingSystem = MatchingSystem()
     preprocess = PreprocessData()
-
+    datamatching = DataMatching()
 
     try:
-
         df = test.crawl()
         df = test.getMessageFromKafka()
         df = pd.DataFrame.from_records(df)
-
+ 
         data = matchingSystem.pipelineMatching(df)
         newDf = preprocess.extractRomFromName(data)
         newDf = preprocess.extractRamFromName(newDf)
@@ -32,10 +32,11 @@ if __name__ == '__main__':
         newDf = preprocess.preprocessColor(newDf)
 
         newDf['store'] = 'cellphoneS'
-        filename = date.today().strftime('cellphoneS'+"%Y%m%d.json")
+        #filename = date.today().strftime('cellphoneS'+"%Y%m%d.json")
         newDf.drop_duplicates(inplace=True)
-        newDf.to_csv('../data/production/' + filename)
-
+        # print(len(newDf))
+        # newDf.to_csv('../data/production/' + filename)
+        datamatching.insertNewData(newDf)
     except Exception as e:
         print(e)
         pass

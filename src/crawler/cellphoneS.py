@@ -22,7 +22,7 @@ class CellphoneS(Crawler):
         self.consumer = KafkaConsumer(self.source,bootstrap_servers=['127.0.0.1:9092'], \
             auto_offset_reset='earliest', \
             enable_auto_commit=True,\
-            group_id='hust-0',consumer_timeout_ms=10000,\
+            group_id='hust-2',consumer_timeout_ms=10000,\
             value_deserializer=lambda x: json.loads(x.decode('utf-8')))
 
     def crawl(self):

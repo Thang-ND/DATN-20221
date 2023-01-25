@@ -9,7 +9,7 @@ from datetime import date
 import re
 from matching.matching_system import MatchingSystem
 from crawler.viettablet import Viettablet
-
+from matching.data_matching import DataMatching
 
 
 def checkIsAlNum(string):
@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     matchingSystem = MatchingSystem()
     preprocess = PreprocessData()
-
+    datamatching = DataMatching()
 
     try:
 
@@ -39,9 +39,10 @@ if __name__ == '__main__':
         newDf = preprocess.preprocessColor(newDf)
 
         newDf['store'] = 'viettablet'
-        filename = date.today().strftime('viettablet'+"%Y%m%d.json")
+        # filename = date.today().strftime('viettablet'+"%Y%m%d.json")
         newDf.drop_duplicates(inplace=True)
-        newDf.to_csv('../data/production/' + filename)
+        # newDf.to_csv('../data/production/' + filename)
+        datamatching.insertNewData(newDf)
 
     except Exception as e:
         print(e)

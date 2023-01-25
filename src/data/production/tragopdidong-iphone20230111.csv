@@ -1,0 +1,86 @@
+,name,url,ram,rom,price,createdDate,color,status,url_img,store
+0,IPHONE 11,http://tragopdidong.vn/iphone-11-128g-quoc-te-moi-100.html,4,128,13468000,2023-01-11 21:24:01.333340,unknown,1,"['http://tragopdidong.vn/img/h360/moi-99-22.jpg', 'http://tragopdidong.vn/img/w60/h95/moi-99-22.jpg']",tragopdidong
+1,IPHONE 8,http://tragopdidong.vn/iphone-8-64g-quoc-te-moi-100.html,2,64,7350000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+2,IPHONE 8 PLUS,http://tragopdidong.vn/iphone-8-plus-64g-quoc-te-moi-100.html,2,64,9950000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+3,IPHONE 8,http://tragopdidong.vn/iphone-8-256g-quoc-te-moi-95-99.html,2,256,2868000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+4,IPHONE 8,http://tragopdidong.vn/iphone-8-64g-quoc-te-moi-95-99.html,2,64,2168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+5,IPHONE 8 PLUS,http://tragopdidong.vn/iphone-8-plus-64g-quoc-te-moi-95-99.html,2,64,3168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+6,IPHONE 8,http://tragopdidong.vn/iphone-8-256g-quoc-te-moi-100.html,2,256,8050000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+7,IPHONE 7 PLUS,http://tragopdidong.vn/iphone-7-plus-32g-quoc-te-moi-95-99.html,3,32,2468000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+8,IPHONE X,http://tragopdidong.vn/iphone-x-256g-quoc-te-moi-100.html,3,256,11650000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+9,IPHONE 7 PLUS,http://tragopdidong.vn/iphone-7-plus-128g-quoc-te-moi-100.html,3,128,8050000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+10,IPHONE 7,http://tragopdidong.vn/iphone-7-32g-quoc-te-moi-95-99.html,2,32,1368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+11,IPHONE 7 PLUS,http://tragopdidong.vn/iphone-7-plus-32g-quoc-te-moi-100.html,3,32,7050000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+12,IPHONE XS MAX,http://tragopdidong.vn/iphone-xs-max-64g-quoc-te-moi-100.html,4,64,15350000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+13,IPHONE XS MAX,http://tragopdidong.vn/iphone-xs-max-64g-quoc-te-moi-95-99.html,4,64,5368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+14,IPHONE XS MAX,http://tragopdidong.vn/iphone-xs-max-512g-quoc-te-moi-100.html,4,512,,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+15,IPHONE 7 PLUS,http://tragopdidong.vn/iphone-7-plus-128g-quoc-te-moi-95-99.html,3,128,3168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+16,IPHONE XS,http://tragopdidong.vn/iphone-xs-64g-quoc-te-moi-95-99.html,4,64,4068000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+17,IPHONE XS,http://tragopdidong.vn/iphone-xs-64g-quoc-te-moi-100.html,4,64,12750000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+18,IPHONE XS,http://tragopdidong.vn/iphone-xs-512g-quoc-te-moi-100.html,4,512,,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+19,IPHONE XS MAX,http://tragopdidong.vn/iphone-xs-max-256g-quoc-te-moi-95-99.html,4,256,6468000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+20,IPHONE XS,http://tragopdidong.vn/iphone-xs-256g-quoc-te-moi-100.html,4,256,13850000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+21,IPHONE 7,http://tragopdidong.vn/iphone-7-32g-quoc-te-moi-100.html,2,32,4968000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+22,IPHONE XR,http://tragopdidong.vn/iphone-xr-64g-quoc-te-moi-95-99.html,3,64,4268000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+23,IPHONE 8 PLUS,http://tragopdidong.vn/iphone-8-plus-256g-quoc-te-moi-95-99.html,2,256,4068000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+24,IPHONE XS MAX,http://tragopdidong.vn/iphone-xs-max-256g-quoc-te-moi-100.html,4,256,17768000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+25,IPHONE XR,http://tragopdidong.vn/iphone-xr-256g-quoc-te-moi-100.html,3,256,13150000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+26,IPHONE XR,http://tragopdidong.vn/iphone-xr-128g-quoc-te-moi-100.html,3,128,10950000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+27,IPHONE 8 PLUS,http://tragopdidong.vn/iphone-8-plus-256g-quoc-te-moi-100.html,2,256,11750000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+28,IPHONE X,http://tragopdidong.vn/iphone-x-256g-quoc-te-moi-95-99.html,3,256,4468000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+29,IPHONE 7,http://tragopdidong.vn/iphone-7-128g-quoc-te-moi-95-99.html,2,128,1968000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+30,IPHONE XR,http://tragopdidong.vn/iphone-xr-128g-quoc-te-moi-95-99.html,3,128,5468000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+31,IPHONE X,http://tragopdidong.vn/iphone-x-64g-quoc-te-moi-100.html,3,64,10250000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+32,IPHONE 6S PLUS,http://tragopdidong.vn/iphone-6s-plus-16g-quoc-te-moi-95-99.html,2,16,1750000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+33,IPHONE X,http://tragopdidong.vn/iphone-x-64g-quoc-te-moi-95-99.html,3,64,3668000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+34,IPHONE 6S PLUS,http://tragopdidong.vn/iphone-6s-plus-64g-quoc-te-moi-100.html,2,64,7668000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+35,IPHONE XR,http://tragopdidong.vn/iphone-xr-64g-quoc-te-moi-100.html,3,64,10050000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+36,IPHONE XS,http://tragopdidong.vn/iphone-xs-256g-quoc-te-moi-95-99.html,4,256,4968000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+37,IPHONE 6S PLUS,http://tragopdidong.vn/iphone-6s-plus-16g-quoc-te-moi-100.html,2,16,5368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+38,IPHONE 6S,http://tragopdidong.vn/iphone-6s-64g-quoc-te-moi-100.html,2,64,5168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+39,IPHONE 6S PLUS,http://tragopdidong.vn/iphone-6s-plus-64g-quoc-te-moi-95-99.html,2,64,2568000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+40,IPHONE 13 PRO MAX,http://tragopdidong.vn/iphone-13-pro-max-256g-quoc-te-moi-100.html,6,256,25968000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+41,IPHONE 7,http://tragopdidong.vn/iphone-7-128g-quoc-te-moi-100.html,2,128,5968000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+42,IPHONE 13 PRO MAX,http://tragopdidong.vn/iphone-13-pro-max-128g-quoc-te-moi-95-99.html,6,128,18567999,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+43,IPHONE 13 PRO MAX,http://tragopdidong.vn/iphone-13-pro-max-128g-quoc-te-moi-100.html,6,128,23568000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+44,IPHONE 13 PRO MAX,http://tragopdidong.vn/iphone-13-pro-max-256g-quoc-te-moi-95-99.html,6,256,19568000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+45,IPHONE 6S,http://tragopdidong.vn/iphone-6s-64g-quoc-te-moi-95-99.html,2,64,1368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+46,IPHONE 6S,http://tragopdidong.vn/iphone-6s-16g-quoc-te-moi-95-99.html,2,16,896800,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+47,IPHONE 13 PRO,http://tragopdidong.vn/iphone-13-pro-128g-quoc-te-moi-95-99.html,6,128,15568000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+48,IPHONE 13,http://tragopdidong.vn/iphone-13-256g-quoc-te-moi-95-99.html,4,256,13368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+49,IPHONE 13 PRO,http://tragopdidong.vn/iphone-13-pro-256g-quoc-te-moi-95-99.html,6,256,17268000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+50,IPHONE 6S,http://tragopdidong.vn/iphone-6s-16g-quoc-te-moi-100.html,2,16,4168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+51,IPHONE 13 PRO,http://tragopdidong.vn/iphone-13-pro-128g-quoc-te-moi-100.html,6,128,19068000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+52,IPHONE 13,http://tragopdidong.vn/iphone-13-128g-quoc-te-moi-95-99.html,4,128,12268000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+53,IPHONE 13,http://tragopdidong.vn/iphone-13-128g-quoc-te-moi-100.html,4,128,16668000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+54,IPHONE 13 PRO,http://tragopdidong.vn/iphone-13-pro-256g-quoc-te-moi-100.html,6,256,21868000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+55,IPHONE 12 PRO MAX,http://tragopdidong.vn/iphone-12-pro-max-256g-quoc-te-moi-95-99.html,6,256,14668000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+56,IPHONE 12 PRO MAX,http://tragopdidong.vn/iphone-12-pro-max-256g-quoc-te-moi-100.html,6,256,19468000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+57,IPHONE 12 PRO MAX,http://tragopdidong.vn/iphone-12-pro-max-128g-quoc-te-moi-100.html,6,128,17368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+58,IPHONE 12 PRO,http://tragopdidong.vn/iphone-12-pro-256g-quoc-te-moi-95-99.html,6,256,11968000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+59,IPHONE 12 PRO,http://tragopdidong.vn/iphone-12-pro-128g-quoc-te-moi-95-99.html,6,128,10668000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+60,IPHONE 12 PRO MAX,http://tragopdidong.vn/iphone-12-pro-max-128g-quoc-te-moi-95-99.html,6,128,12768000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+61,IPHONE 12,http://tragopdidong.vn/iphone-12-256g-quoc-te-moi-100.html,4,256,,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+62,IPHONE 12,http://tragopdidong.vn/iphone-12-128g-quoc-te-moi-95-99.html,4,128,9768000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+63,IPHONE 12 PRO,http://tragopdidong.vn/iphone-12-pro-256g-quoc-te-moi-100.html,6,256,17368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+64,IPHONE 12,http://tragopdidong.vn/iphone-12-128g-quoc-te-moi-100.html,4,128,13568000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+65,IPHONE 12,http://tragopdidong.vn/iphone-12-64g-quoc-te-moi-95-99.html,4,64,8068000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+66,IPHONE 12 PRO,http://tragopdidong.vn/iphone-12-pro-128g-quoc-te-moi-100.html,6,128,15968000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+67,IPHONE 11 PRO MAX,http://tragopdidong.vn/iphone-11-pro-max-512g-quoc-te-moi-95-99.html,4,512,,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+68,IPHONE 11 PRO MAX,http://tragopdidong.vn/iphone-11-pro-max-512g-quoc-te-moi-100.html,4,512,,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+69,IPHONE 13,http://tragopdidong.vn/iphone-13-256g-quoc-te-moi-100.html,4,256,18368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+70,IPHONE 11 PRO MAX,http://tragopdidong.vn/iphone-11-pro-max-64g-quoc-te-moi-100.html,4,64,14168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+71,IPHONE 11 PRO MAX,http://tragopdidong.vn/iphone-11-pro-max-256g-quoc-te-moi-95-99.html,4,256,9668000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+72,IPHONE 11 PRO,http://tragopdidong.vn/iphone-11-pro-64g-quoc-te-moi-100.html,4,64,13468000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+73,IPHONE 11 PRO MAX,http://tragopdidong.vn/iphone-11-pro-max-64g-quoc-te-moi-95-99.html,4,64,8168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+74,IPHONE 11 PRO,http://tragopdidong.vn/iphone-11-pro-512g-quoc-te-moi-100.html,4,512,,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+75,IPHONE 11 PRO,http://tragopdidong.vn/iphone-11-pro-64g-quoc-te-moi-95-99.html,4,64,7168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+76,IPHONE 12,http://tragopdidong.vn/iphone-12-256g-quoc-te-moi-95-99.html,4,256,16768000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+77,IPHONE 11,http://tragopdidong.vn/iphone-11-64g-quoc-te-moi-95-99.html,4,64,5168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+78,IPHONE 11 PRO,http://tragopdidong.vn/iphone-11-pro-256g-quoc-te-moi-100.html,4,256,14168000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+79,IPHONE 11,http://tragopdidong.vn/iphone-11-128g-quoc-te-moi-95-99.html,4,128,6868000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+80,IPHONE 11 PRO,http://tragopdidong.vn/iphone-11-pro-512g-quoc-te-moi-95-99.html,4,512,,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+81,IPHONE 11 PRO,http://tragopdidong.vn/iphone-11-pro-256g-quoc-te-moi-95-99.html,4,256,8468000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+82,IPHONE 11 PRO MAX,http://tragopdidong.vn/iphone-11-pro-max-256g-quoc-te-moi-100.html,4,256,14768000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+83,IPHONE 12,http://tragopdidong.vn/iphone-12-64g-quoc-te-moi-100.html,4,64,12368000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong
+84,IPHONE 11,http://tragopdidong.vn/iphone-11-64g-quoc-te-moi-100.html,4,64,11468000,2023-01-11 21:24:01.333340,unknown,1,[],tragopdidong

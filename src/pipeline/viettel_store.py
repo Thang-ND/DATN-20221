@@ -9,7 +9,7 @@ from datetime import date
 import re
 from matching.matching_system import MatchingSystem
 from crawler.viettel_store import ViettelStore
-
+from matching.data_matching import DataMatching
 
 
 if __name__ == '__main__':
@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     matchingSystem = MatchingSystem()
     preprocess = PreprocessData()
-
+    datamatching = DataMatching()
 
     try:
 
@@ -33,9 +33,10 @@ if __name__ == '__main__':
         newDf.replace(r'^\s*$', 0, regex=True, inplace=True)
 
         newDf['store'] = 'viettelstore'
-        filename = date.today().strftime('viettelstore'+"%Y%m%d.json")
+        # filename = date.today().strftime('viettelstore'+"%Y%m%d.json")
         newDf.drop_duplicates(inplace=True)
-        newDf.to_csv('../data/production/' + filename)
+        # newDf.to_csv('../data/production/' + filename)
+        datamatching.insertNewData(newDf)
 
     except Exception as e:
         print(e)
