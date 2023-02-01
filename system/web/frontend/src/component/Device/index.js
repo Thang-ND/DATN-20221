@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import "../../page/search/Product.css";
-import { Link } from 'react-router-dom';
+
+
 DeviceList.propTypes = {
     devices: PropTypes.array,
     productList:PropTypes.func
@@ -13,7 +14,6 @@ DeviceList.defaultProps = {
 };
 
 function DeviceList(props) {
-    
     const { devices,productList } = props;
     
     const hanldeClickOnDevice =(e,product,url)=>{
@@ -54,11 +54,7 @@ function DeviceList(props) {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                   
-
-
                 ))};
             </div>
         </div>
