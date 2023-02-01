@@ -1,0 +1,133 @@
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+  }
+  
+  .hero-container {
+    background: url('../resource/image/apple-store.jpeg') center center/cover no-repeat;
+    height: 150vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+  }
+  
+.hero-container > h1 {
+  color: #fff;
+  font-size: 100px;
+  margin-top: -100px;
+}
+
+.hero-container > p {
+  margin-top: 8px;
+  color: #fff;
+  font-size: 32px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+.hero-btns {
+  margin-top: 32px;
+}
+
+.hero-btns .btn {
+  margin: 6px;
+}
+
+.fa-play-circle {
+  margin-left: 4px;
+}
+@media screen and (max-width: 960px) {
+  .hero-container > h1 {
+    font-size: 70px;
+    margin-top: -150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-container > h1 {
+    font-size: 50px;
+    margin-top: -100px;
+  }
+
+  .hero-container > p {
+    font-size: 30px;
+  }
+
+  .btn-mobile {
+    display: block;
+    text-decoration: none;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+.text-field {
+  position: relative;
+}
+
+.text-field label {
+  display: inline-block;
+  font-weight: 100;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  background-color: #dff9fb;
+  padding: 1px 5px;
+  font-size: 12px;
+  transform: translateY(-50%);
+  color: rgb(18, 17, 17);
+}
+
+.text-field input {
+  padding: 15px 60px;
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #f1f1f2;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+}
+.typed-animation {
+  display: inline-block;
+}
+
+.typed-out {
+  overflow: hidden;
+  color: #c7ecee;
+  white-space: nowrap;
+  border-right: 0.25rem solid #fff;
+  font-size: 3rem;
+  font-weight: 700;
+  animation: typing 8s steps(40) infinite, blinking 1s infinite;
+}
+
+@keyframes typing {
+  0%, 100% {
+    width: 0;
+  }
+
+  50%, 90% {
+    width: 100%;
+  }
+}
+
+@keyframes blinking {
+  0%, 100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: #fff;
+  }
+}
