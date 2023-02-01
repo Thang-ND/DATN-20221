@@ -1,25 +1,22 @@
-import axios from "axios";
-import React, {useState, Component } from "react";
-import { render } from "react-dom";
-import { Button } from '../Button';
-import DeviceList from "../Device";
+import React, {useState} from "react";
+
 
 function PostForm({OnAdd}) {
     const [name,setName]=useState('');
     const [color,setColor]=useState('');
     const [rom,setRom]=useState('');
     const [ram,setRam]=useState('');
-   const [reload,setReload] = useState(false);
+    const [reload,setReload] = useState(false);
     const changeHandlerName =(e)=>{
        setName(e.target.value);
     }
     const changeHandlerColor =(e)=>{
         setColor(e.target.value);
      }
-     const changeHandlerRom =(e)=>{
+    const changeHandlerRom =(e)=>{
         setRom(e.target.value);
      }
-     const changeHandlerRam =(e)=>{
+    const changeHandlerRam =(e)=>{
         setRam(e.target.value);
      }
     
@@ -29,17 +26,14 @@ function PostForm({OnAdd}) {
   
     const submitHandler = (e) => {
         e.preventDefault();
-        
         OnAdd({name,color,rom,ram,reload});
         setName('');
         setColor('');
         setRom('');
         setRam('');
-        
     }
-    
-        return (
-            
+
+    return (
             <form method="post"  onSubmit={submitHandler}>
                 <div className='text-field'>
                     <label for="name">Please Enter Name</label>
@@ -74,7 +68,6 @@ function PostForm({OnAdd}) {
                     />
                 </div>
                 <div className='hero-btns'>
-
                     <button
                         className='btn btn-block'
                         buttonStyle='btn--primary'
@@ -82,7 +75,7 @@ function PostForm({OnAdd}) {
                         type='submit'
                         style={{backgroundColor:"white"}}
                     >
-                        Search Information<i className='far fa-play-circle' />
+                        Submit<i className='far fa-play-circle' />
                     </button>
                 </div>
                 {isSubmited && <p> Form Submiter Successfully</p>}

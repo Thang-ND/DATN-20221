@@ -44,10 +44,6 @@ public class DeviceService {
         return result;
     }
     public List<Device> findProductsWithPagination(String name,String color,int ram,double rom,int page,int pageSize){
-//        Page<Device> devices = deviceRepository.
-//                findAllByNameContainingIgnoreCaseAndColorIgnoreCaseAndRamIgnoreCaseAndRomIgnoreCase(name,color,ram,rom,
-//                        PageRequest.of(offset,pageSize));
-
         Query query = new Query();
         Criteria criteria = new Criteria();
         //query.addCriteria(Criteria.where("name").is(name));

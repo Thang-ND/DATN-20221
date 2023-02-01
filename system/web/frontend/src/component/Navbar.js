@@ -4,68 +4,56 @@ import '../component/Navbar.css';
 
 function Navbar() {
   const [click, setClick] = useState(false);
-  //const [button, setButton] = useState(true);
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  //const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => {
+    setClick(false);
+  };
 
-  // const showButton = () => {
-  //   if (window.innerWidth <= 960) {
-  //     setButton(false);
-  //   } else {
-  //     setButton(true);
-  //   }
-  // };
-
-  // useEffect(() => { //display none Button Sign up when reload website
-  //   showButton();
-  // }, []);
-
- // window.addEventListener('resize', showButton);
 
   return (
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            NMH & NDT 
+          <a href='http://localhost:3000/' className='navbar-logo' onClick={closeMobileMenu}>
+            HUST & NDT 
             <i class='fas fa-spa' />
-          </Link>
-          <div className='menu-icon' onClick={handleClick}>
+          </a>
+          {/* <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
+          </div> */}
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              <a href='http://localhost:3000/' className='nav-links' onClick={closeMobileMenu}>
                 Home
-              </Link>
+              </a>
             </li>
             <li className='nav-item'>
-              <Link
-                to='/services'
+              <a
+                href='http://localhost:3000/services'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
                 Services
-              </Link>
+              </a>
             </li>
             <li className='nav-item'>
-              <Link
-                to='/products'
+              <a
+                href='http://localhost:3000/products'
                 className='nav-links'
-                onClick={closeMobileMenu}
+                onClick={() => closeMobileMenu}
               >
                 Products
-              </Link>
+              </a>
             </li>
             <li className='nav-item'>
-              <Link
-                to='/fluctuations'
+              <a
+                href='http://localhost:3000/fluctuations'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
                 Fluctuations
-              </Link>
+              </a>
             </li>
           </ul>
           
