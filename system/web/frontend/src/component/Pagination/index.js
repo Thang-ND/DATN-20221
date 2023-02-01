@@ -13,8 +13,8 @@ Pagination.defaultProps={
 
 function Pagination(props) {
     const {pagination,onPageChange} = props;
-    const {_page,_limit,_totalPost}=pagination;
-   const totalPages = Math.ceil(_totalPost/_limit);
+    const {_page,_limit,_totalPost}= pagination;
+    const totalPages = Math.ceil(_totalPost/_limit);
 
     function handlePageChange(newPage){
         if(onPageChange){
@@ -26,7 +26,7 @@ function Pagination(props) {
             <button className='btn btn-block'
             style={{backgroundColor:"white"}}
             disabled={_page<=0}
-            onClick={()=>handlePageChange(_page - 9)}
+            onClick={()=>handlePageChange(_page - 1)}
             >
                 Prev
             </button>
@@ -34,7 +34,7 @@ function Pagination(props) {
             <button className='btn btn-block'
             style={{backgroundColor:"white"}}
             disabled={_page >= totalPages}
-            onClick={()=>handlePageChange(_page + 9)}
+            onClick={()=>handlePageChange(_page + 1)}
             >
                 Next
             </button>

@@ -15,7 +15,7 @@ function HeroSection() {
     color: '',
     ram: '',
     rom: '',
-    offset: 0,
+    page: 0,
     pageSize: 9,
   });
   const [urlStore,setUrlStore]=useState('');
@@ -28,10 +28,10 @@ function HeroSection() {
     _totalPost: 9,
   });
 
-  function handlePageChange(newOffset) {
+  function handlePageChange(newPage) {
     setFilters({
       ...filters,
-      offset: newOffset,
+      page: newPage,
     })
   };
 
@@ -46,18 +46,18 @@ function HeroSection() {
         if(!paramsString.includes('name')){
           return;
         }
+        //alert(`http://localhost:8080/api/devices/pagination?${paramsString}`);
         const requestUrl = `http://localhost:8080/api/devices/pagination?${paramsString}`;
         const response = await fetch(requestUrl);
         const responseJSON = await response.json();
 
-        const { content, pageable } = responseJSON;
+        //const { content, pageable } = responseJSON;
         
         //console.log(responseJSON);
-        // setPagination({
-        //   _page: pageable.pageNumber,
-        //   _limit: pageable.offset,
-        //   _totalPost: pagination._totalPost,
-        // });
+        setPagination({
+          _page: filters.page,
+          _limit: filters.pageSize
+        });
         setDevice(responseJSON);
 
       } catch (err) {
@@ -76,7 +76,7 @@ function HeroSection() {
     setSubmit(false);
     
     axios.
-      all([axios.get(`http://localhost:8080/api/devices/pagination?name=${post.name}&color=${post.color}&ram=${post.ram}&rom=${post.rom}&offset=0&pageSize=9`), 
+      all([axios.get(`http://localhost:8080/api/devices/pagination?name=${post.name}&color=${post.color}&ram=${post.ram}&rom=${post.rom}&page=0&pageSize=9`), 
       axios.get(`http://localhost:8080/api/devices/phone/search?name=${post.name}&color=${post.color}&ram=${post.ram}&rom=${post.rom}`)])
       .then(
         axios.spread((searchData, all) => {
@@ -94,7 +94,7 @@ function HeroSection() {
             color: post.color,
             ram: post.ram,
             rom: post.rom,
-            offset: 0,
+            page: 0,
             pageSize: 9,
           })
 
@@ -135,7 +135,7 @@ function HeroSection() {
         color: responJSON.color,
         ram: responJSON.ram,
         rom: responJSON.rom,
-        offset: 0,
+        page: 0,
         pageSize: responJSON.length,
       })
     

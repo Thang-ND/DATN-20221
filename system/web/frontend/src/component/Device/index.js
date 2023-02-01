@@ -17,15 +17,11 @@ function DeviceList(props) {
     const { devices,productList } = props;
     
     const hanldeClickOnDevice =(e,product,url)=>{
-        //alert("hoang");
         e.preventDefault();
         if(productList){
             productList(product,url);
-            //console.log(product);
         }
-       
-        
-        //console.log(product);
+
     }
     return (
         <div className='container'>
