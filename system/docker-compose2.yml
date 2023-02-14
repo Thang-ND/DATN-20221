@@ -73,7 +73,8 @@ services:
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     volumes:
-      - zookeeper_data:/home/thangnd/kafka/zookeeper_data
+    #   - zookeeper_data:/home/thangnd/kafka/zookeeper_data
+        - zookeeper_data:/bitnami/zookeeper
   kafka:
     image: 'bitnami/kafka:3.3'
     container_name: kafka0

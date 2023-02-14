@@ -46,7 +46,7 @@ function HeroSection() {
         if(!paramsString.includes('name')){
           return;
         }
-        //alert(`http://localhost:8080/api/devices/pagination?${paramsString}`);
+
         const requestUrl = `http://localhost:8080/api/devices/pagination?${paramsString}`;
         const response = await fetch(requestUrl);
         const responseJSON = await response.json();
@@ -54,9 +54,10 @@ function HeroSection() {
         //const { content, pageable } = responseJSON;
         
         //console.log(responseJSON);
-        setPagination({
+        setPagination(
+       {   ...pagination,
           _page: filters.page,
-          _limit: filters.pageSize
+          _limit: filters.pageSize,
         });
         setDevice(responseJSON);
 
@@ -106,7 +107,8 @@ function HeroSection() {
   async function SpecificDeviceAdd(list_id,url) {
    
     if(typeof(list_id)=='undefined'){
-      window.location.href=urlStore;
+      //window.location.href=urlStore;
+      window.open(url, '_blank');
       return;
     }
       var myHeaders = new Headers();
