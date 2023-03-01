@@ -111,5 +111,10 @@ class PreprocessData():
                 if df.loc[i, 'color'].upper() == self.color1[j]:
                     df.loc[i, 'color'] = self.color2[j]
                     break
-
+    
+        for i in range(len(df)):
+            for j in range(len(self.color1)):
+                if self.color1[j] in df.loc[i, 'color'].upper():
+                    df.loc[i, 'color'] = self.color2[j]
+                    break
         return df 
