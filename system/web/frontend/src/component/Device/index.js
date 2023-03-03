@@ -36,14 +36,14 @@ function DeviceList(props) {
                                             <img className="imgUNcover" src='/images/iphone-14-pro-pro-max.jpeg' />
                                         </div>
 
-                                        <div className="description col col-lg-6">
+                                        <div className="description col col-lg-5">
                                             <h3 >{device.name.toLowerCase()}</h3><br />
                                             <span><b>Ram: </b>{device.ram}</span><br />
                                             <span><b>Rom: </b>{device.rom}</span><br />
                                             <span><b>Color: </b>{device.color.toLowerCase()}</span><br />
                                             <p><b>Price: </b>{parseFloat(device.price).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p><br />
                                         </div>
-                                        <div className="description col col-lg-2">
+                                        <div className="description col col-lg-3">
                                             {device.list_id && <span> Stores: {device.list_id.length}</span>}
                                             {device.store && <span > Stores: {device.store}</span>}
                                         </div>

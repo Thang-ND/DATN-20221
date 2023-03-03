@@ -1,83 +1,122 @@
 package com.example.springbootmongodb.Model;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 @Data
 @Document("Product_Detail")
 public class DeviceDetail {
     @Id
-    private String _id ;
-    private String $oid ;
+    @Field(value = "_id")
+    private ObjectId Oid ;
+    @Field(value = "name")
     private String name ;
+    @Field(value = "Technology")
     private String Technology ;
-    private String bands_2G  ;
-    private String bands_3G  ;
-    private String bands_4G  ;
-    private String bands_5G  ;
+    @Field(value = "2G bands")
+    private String Bands_2G  ;
+    @Field(value = "3G bands")
+    private String Bands_3G  ;
+    @Field(value = "4G bands")
+    private String Bands_4G  ;
+    @Field(value = "5G bands")
+    private String Bands_5G  ;
+    @Field(value = "Speed")
     private String Speed ;
+    @Field(value = "Announced")
     private String Announced ;
+    @Field(value = "Status")
     private String Status ;
+    @Field(value = "Dimensions")
     private String Dimensions ;
+    @Field(value = "Weight")
     private String Weight ;
+    @Field(value = "Build")
     private String Build ;
+    @Field(value = "SIM")
     private String SIM ;
+    @Field(value = "Type")
     private String Type ;
+    @Field(value = "Size")
     private String Size ;
+    @Field(value = "Resolution")
     private String Resolution ;
+    @Field(value = "Protection")
     private String Protection ;
+    @Field(value = "OS")
     private String OS ;
+    @Field(value = "Chipset")
     private String Chipset ;
+    @Field(value = "CPU")
     private String CPU ;
+    @Field(value = "GPU")
     private String GPU ;
+    @Field(value = "Card slot")
     private String Card_slot ;
+    @Field(value = "Internal")
     private String Internal ;
+    @Field(value = "Triple")
     private String Triple ;
+    @Field(value = "Features")
     private String Features ;
+    @Field(value = "Video")
     private String Video ;
+    @Field(value = "Single")
     private String Single ;
+    @Field(value = "Loudspeaker")
     private String Loudspeaker ;
+    @Field(value = "3.5mm jack")
     private String jack_3_5mm  ;
+    @Field(value = "WLAN")
     private String WLAN ;
+    @Field(value = "Bluetooth")
     private String Bluetooth ;
+    @Field(value = "Positioning")
     private String Positioning ;
+    @Field(value = "NFC")
     private String NFC ;
+    @Field(value = "Radio")
     private String Radio ;
+    @Field(value = "USB")
     private String USB ;
+    @Field(value = "Sensors")
     private String Sensors ;
+    @Field(value = "Charging")
     private String Charging ;
+    @Field(value = "Colors")
     private String Colors ;
+    @Field(value = "Models")
     private String Models ;
+    @Field(value = "SAR")
     private String SAR ;
+    @Field(value = "SAR EU")
     private String SAR_EU ;
+    @Field(value = "Price")
     private String Price ;
+    @Field(value = "Performance")
     private String Performance ;
+    @Field(value = "Display")
     private String Display ;
+    @Field(value = "Camera")
     private String Camera ;
+    @Field(value = "Battery life")
     private String Battery_life ;
 
     public DeviceDetail() {
     }
 
-    public DeviceDetail(String _id, String $oid, String name, String technology, String bands_2G, String bands_3G,
-                        String bands_4G, String bands_5G, String speed, String announced, String status,
-                        String dimensions, String weight, String build, String SIM, String type, String size,
-                        String resolution, String protection, String OS, String chipset, String CPU, String GPU,
-                        String card_slot, String internal, String triple, String features, String video, String single,
-                        String loudspeaker, String jack_3_5mm, String WLAN, String bluetooth, String positioning,
-                        String NFC, String radio, String USB, String sensors, String charging, String colors,
-                        String models, String SAR, String SAR_EU, String price, String performance, String display,
-                        String camera, String battery_life) {
-        this._id = _id;
-        this.$oid = $oid;
-        this.name = name;
+    public DeviceDetail(ObjectId oid, String name, String technology, String bands_2G, String bands_3G, String bands_4G, String bands_5G, String speed, String announced, String status, String dimensions, String weight, String build, String SIM, String type, String size, String resolution, String protection, String OS, String chipset, String CPU, String GPU, String card_slot, String internal, String triple, String features, String video, String single, String loudspeaker, String jack_3_5mm, String WLAN, String bluetooth, String positioning, String NFC, String radio, String USB, String sensors, String charging, String colors, String models, String SAR, String SAR_EU, String price, String performance, String display, String camera, String battery_life) {
+        Oid = oid;
+        name = name;
         Technology = technology;
-        this.bands_2G = bands_2G;
-        this.bands_3G = bands_3G;
-        this.bands_4G = bands_4G;
-        this.bands_5G = bands_5G;
+        Bands_2G = bands_2G;
+        Bands_3G = bands_3G;
+        Bands_4G = bands_4G;
+        Bands_5G = bands_5G;
         Speed = speed;
         Announced = announced;
         Status = status;
@@ -120,20 +159,12 @@ public class DeviceDetail {
         Battery_life = battery_life;
     }
 
-    public String get_id() {
-        return _id;
+    public ObjectId getOid() {
+        return Oid;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
-    public String get$oid() {
-        return $oid;
-    }
-
-    public void set$oid(String $oid) {
-        this.$oid = $oid;
+    public void setOid(ObjectId oid) {
+        Oid = oid;
     }
 
     public String getName() {
@@ -141,7 +172,7 @@ public class DeviceDetail {
     }
 
     public void setName(String name) {
-        this.name = name;
+        name = name;
     }
 
     public String getTechnology() {
@@ -153,35 +184,35 @@ public class DeviceDetail {
     }
 
     public String getBands_2G() {
-        return bands_2G;
+        return Bands_2G;
     }
 
     public void setBands_2G(String bands_2G) {
-        this.bands_2G = bands_2G;
+        Bands_2G = bands_2G;
     }
 
     public String getBands_3G() {
-        return bands_3G;
+        return Bands_3G;
     }
 
     public void setBands_3G(String bands_3G) {
-        this.bands_3G = bands_3G;
+        Bands_3G = bands_3G;
     }
 
     public String getBands_4G() {
-        return bands_4G;
+        return Bands_4G;
     }
 
     public void setBands_4G(String bands_4G) {
-        this.bands_4G = bands_4G;
+        Bands_4G = bands_4G;
     }
 
     public String getBands_5G() {
-        return bands_5G;
+        return Bands_5G;
     }
 
     public void setBands_5G(String bands_5G) {
-        this.bands_5G = bands_5G;
+        Bands_5G = bands_5G;
     }
 
     public String getSpeed() {

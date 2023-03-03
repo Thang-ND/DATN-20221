@@ -23,7 +23,7 @@ function Pagination(props) {
     }
     return (
         <div>
-            <button className='btn btn-block'
+            <button className='btn btn-block ' 
             style={{backgroundColor:"white"}}
             disabled={_page<=0}
             onClick={()=>handlePageChange(_page - 1)}
@@ -31,7 +31,7 @@ function Pagination(props) {
                 Prev
             </button>
 
-            <button className='btn btn-block'
+            <button className='btn btn-block '
             style={{backgroundColor:"white"}}
             disabled={_page >= totalPages}
             onClick={()=>handlePageChange(_page + 1)}

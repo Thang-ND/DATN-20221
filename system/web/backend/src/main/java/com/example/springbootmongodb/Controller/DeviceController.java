@@ -1,12 +1,12 @@
 package com.example.springbootmongodb.Controller;
 
+import com.example.springbootmongodb.Model.DeviceDetail;
 import com.example.springbootmongodb.Model.SpecificDevice;
+import com.example.springbootmongodb.Service.DeviceDetailService;
 import com.example.springbootmongodb.Service.DeviceService;
 import com.example.springbootmongodb.Model.Device;
 import com.example.springbootmongodb.Service.SpecificDeviceService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 
 public class DeviceController {
+    private final DeviceDetailService deviceDetailService;
     private  final DeviceService deviceService;
     private  final SpecificDeviceService specificDeviceService;
     //@GetMapping("/phone")
@@ -50,5 +51,10 @@ public class DeviceController {
     @PostMapping ("/specificDevice")
     public List<SpecificDevice> getSpecificDevice(@RequestBody List<String> list_id){
         return  specificDeviceService.getAllSpecificDevice(list_id);
+    }
+    @CrossOrigin("http://localhost:3000")
+    @GetMapping ("/detailDevice")
+    public List<DeviceDetail> getDetailDevice(@RequestParam(required = false) String name){
+        return  deviceDetailService.getAllDeviceDetail(name);
     }
 }

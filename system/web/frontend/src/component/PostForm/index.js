@@ -38,7 +38,7 @@ function PostForm({OnAdd}) {
                 <div className='text-field'>
                     <label for="name">Please Enter Name</label>
                     <input
-                       type="text" id="name" placeholder="Enter name" 
+                       type="text" id="name" placeholder="" 
                        onChange={(e)=>changeHandlerName(e)}
                         value={name}
                     />
@@ -46,7 +46,7 @@ function PostForm({OnAdd}) {
                 <div className='text-field'>
                     <label for="color">Please Enter Color</label>
                     <input
-                        type="text" id="color" placeholder="Enter color" 
+                        type="text" id="color" placeholder="" 
                         onChange={(e)=>changeHandlerColor(e)}
                         value={color}
                     />
@@ -54,7 +54,7 @@ function PostForm({OnAdd}) {
                 <div className='text-field'>
                     <label for="rom">Please Enter Rom</label>
                     <input
-                        type="text" id="rom" placeholder="Enter rom" 
+                        type="text" id="rom" placeholder="" 
                         onChange={(e)=>changeHandlerRom(e)}
                         value={rom}
                     />
@@ -62,7 +62,7 @@ function PostForm({OnAdd}) {
                 <div className='text-field'>
                     <label for="ram">Please Enter Ram</label>
                     <input
-                        type="text" id="ram" placeholder="Enter ram" 
+                        type="text" id="ram" placeholder="" 
                         onChange={(e)=>changeHandlerRam(e)}
                         value={ram}
                     />
@@ -73,7 +73,7 @@ function PostForm({OnAdd}) {
                         buttonStyle='btn--primary'
                         buttonSize='btn--large'
                         type='submit'
-                        style={{backgroundColor:"white"}}
+                        
                     >
                         Submit<i className='far fa-play-circle' />
                     </button>

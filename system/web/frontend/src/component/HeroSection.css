@@ -8,7 +8,7 @@ video {
 
 .hero-container {
   background: url('../../public//images/apple-store.jpeg') center center/cover no-repeat;
-  height: 150vh;
+  /*height: 150vh;*/
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -46,8 +46,7 @@ margin: 6px;
   background-color: white;
 }
 .hero-btns .btn:hover {
-
-  background-color:#12CBC4;
+  background-color:#0fbcf9;
 }
 
 .fa-play-circle {
@@ -98,21 +97,36 @@ color: rgb(18, 17, 17);
 }
 
 .text-field input {
-padding: 20px 150px;
+padding: 20px 150px 20px 20px;
 display: block;
 width: 100%;
-font-size: 14px;
+font-size: 20px;
 border: 1px solid #4bcffa;
 border-radius: 22px;
 background-color: transparent;
-color: #fff;
 outline: none;
 margin-top: 22px;
+color: white;
 }
 .typed-animation {
 display: inline-block;
 }
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  opacity: 1; /* Firefox */
+  font-size: 22px;
+}
 
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+  opacity: 1; /* Firefox */
+  font-size: 22px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+  font-size: 22px;
+}
 .typed-out {
 overflow: hidden;
 color: white;
@@ -141,4 +155,16 @@ animation: typing 8s steps(40) infinite, blinking 1s infinite;
 50% {
   border-color: #fff;
 }
+}
+
+.view_detail {
+  background-color: #629e64; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+ 
 }
