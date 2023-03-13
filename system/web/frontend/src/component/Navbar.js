@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import '../component/Navbar.css';
 
 function Navbar() {
@@ -19,9 +18,7 @@ function Navbar() {
             HUST & NDT 
             <i class='fas fa-spa' />
           </a>
-          {/* <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div> */}
+
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
               <a href='http://localhost:3000/' className='nav-links' onClick={closeMobileMenu}>
@@ -52,7 +49,7 @@ function Navbar() {
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Fluctuations
+                Charts
               </a>
             </li>
           </ul>

@@ -1,4 +1,5 @@
 echo "START DATA FLOW"
+cd /home/thangnd/Documents/20221/DATN-20221/src/pipeline
 /home/thangnd/anaconda3/envs/crawler/bin/python3 /home/thangnd/Documents/20221/DATN-20221/src/pipeline/cellphoneS.py
 /home/thangnd/anaconda3/envs/crawler/bin/python3 /home/thangnd/Documents/20221/DATN-20221/src/pipeline/tragopdidong.py
 /home/thangnd/anaconda3/envs/crawler/bin/python3 /home/thangnd/Documents/20221/DATN-20221/src/pipeline/dienmaycholon.py

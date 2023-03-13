@@ -12,9 +12,9 @@ public class Device {
     private String id;
     private String name;
     private String url;
-    private int ram;
-    private double rom;
-    private double price;
+    private String ram;
+    private String rom;
+    private String price;
     private String createDate;
     private String color;
     private int status;
@@ -24,7 +24,7 @@ public class Device {
     public Device() {
     }
 
-    public Device(String id, String name, String url, int ram, double rom, double price, String createDate,
+    public Device(String id, String name, String url, String ram, String rom, String price, String createDate,
                   String color, int status, String url_img, List<String> list_id) {
         this.id = id;
         this.name = name;
@@ -63,27 +63,27 @@ public class Device {
         this.url = url;
     }
 
-    public int getRam() {
+    public String getRam() {
         return ram;
     }
 
-    public void setRam(int ram) {
+    public void setRam(String ram) {
         this.ram = ram;
     }
 
-    public double getRom() {
+    public String getRom() {
         return rom;
     }
 
-    public void setRom(double rom) {
+    public void setRom(String rom) {
         this.rom = rom;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

@@ -24,7 +24,8 @@ public class DeviceService {
     public List<Device> getAllDevices(){
         return deviceRepository.findAll();
     }
-    public List<Device> searchDevice(String name,String color,int ram,double rom){
+    public List<Device> searchDevice(String name,String color,double ram,double rom){
+        System.out.println("*************************8");
         Query query = new Query();
         Criteria criteria = new Criteria();
         //query.addCriteria(Criteria.where("name").is(name));
@@ -40,10 +41,12 @@ public class DeviceService {
         }
         query.addCriteria(criteria);
         //System.out.println(query);
+        System.out.println("==========================================");
+        System.out.println(query);
         List<Device> result = mt.find(query, Device.class);
         return result;
     }
-    public List<Device> findProductsWithPagination(String name,String color,int ram,double rom,int page,int pageSize){
+    public List<Device> findProductsWithPagination(String name,String color,double ram,double rom,int page,int pageSize){
         Query query = new Query();
         Criteria criteria = new Criteria();
         //query.addCriteria(Criteria.where("name").is(name));

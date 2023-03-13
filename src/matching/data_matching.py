@@ -83,7 +83,7 @@ class DataMatching():
         col1 = db[self.collection1] # product_search
         col2 = db[self.collection2] # products
 
-        df['id'] = df['name'].astype(str) + df['url'].astype(str)  + df['rom'].astype(str) + df['color'] + \
+        df['id'] = df['name'].astype(str) + df['url'].astype(str)  + df['rom'].astype(str)+ df['ram'].astype(str) + df['color'] + \
             df['status'].astype(str) + df['store'].astype(str) 
         df['id'] = df['id'].apply(self.encrypt_string) 
         df = df.to_dict('records')
@@ -109,3 +109,4 @@ class DataMatching():
                 #     data = item
                 #     col1.insert_one(data)                
                 # col2.insert_one(item)
+        print("Successfully insert into mongodb")

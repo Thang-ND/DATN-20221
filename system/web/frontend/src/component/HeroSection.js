@@ -66,7 +66,7 @@ const paginate = (pageNumber) =>{
           return;
         }
 
-        const requestUrl = `http://localhost:8080/api/devices/pagination?${paramsString}`;
+        const requestUrl = `https://thangnd-hust.fly.dev/api/devices/pagination?${paramsString}`;
         const response = await fetch(requestUrl);
         const responseJSON = await response.json();
 
@@ -89,7 +89,7 @@ const paginate = (pageNumber) =>{
 
 
 
-
+// s://white-leaf-1299.fly.dev
   const AddPost = (post) => {
     setDevice({});
     setPagination({});
@@ -97,8 +97,8 @@ const paginate = (pageNumber) =>{
     setSubmit(false);
     setCheckViewDetail({nameProduct:filters.name,check:false});
     axios.
-      all([axios.get(`http://localhost:8080/api/devices/pagination?name=${post.name}&color=${post.color}&ram=${post.ram}&rom=${post.rom}&page=0&pageSize=9`), 
-      axios.get(`http://localhost:8080/api/devices/phone/search?name=${post.name}&color=${post.color}&ram=${post.ram}&rom=${post.rom}`)])
+      all([axios.get(`https://thangnd-hust.fly.dev/api/devices/pagination?name=${post.name}&color=${post.color}&ram=${post.ram}&rom=${post.rom}&page=0&pageSize=9`), 
+      axios.get(`https://thangnd-hust.fly.dev/api/devices/phone/search?name=${post.name}&color=${post.color}&ram=${post.ram}&rom=${post.rom}`)])
       .then(
         axios.spread((searchData, all) => {
 
@@ -143,7 +143,7 @@ const paginate = (pageNumber) =>{
         body: raw,
         redirect: 'follow'
       };
-      const response = await fetch(`http://localhost:8080/api/devices/specificDevice`, requestOptions);
+      const response = await fetch(`https://thangnd-hust.fly.dev/api/devices/specificDevice`, requestOptions);
       const responJSON = await response.json();
       setUrlStore(url);
     
@@ -175,7 +175,7 @@ const paginate = (pageNumber) =>{
     if(titleButtonDetail == "View More"){
       setTitleButtonDetail('Close Detail Device');
       setOpenViewMore(true);
-      axios.get(`http://localhost:8080/api/devices/detailDevice?name=${nameProduct}`)
+      axios.get(`https://thangnd-hust.fly.dev/api/devices/detailDevice?name=${nameProduct}`)
       .then(res => {
         const product = res.data;
         //console.log(product);

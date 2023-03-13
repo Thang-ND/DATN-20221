@@ -109,7 +109,15 @@ public class DeviceDetail {
     public DeviceDetail() {
     }
 
-    public DeviceDetail(ObjectId oid, String name, String technology, String bands_2G, String bands_3G, String bands_4G, String bands_5G, String speed, String announced, String status, String dimensions, String weight, String build, String SIM, String type, String size, String resolution, String protection, String OS, String chipset, String CPU, String GPU, String card_slot, String internal, String triple, String features, String video, String single, String loudspeaker, String jack_3_5mm, String WLAN, String bluetooth, String positioning, String NFC, String radio, String USB, String sensors, String charging, String colors, String models, String SAR, String SAR_EU, String price, String performance, String display, String camera, String battery_life) {
+    public DeviceDetail(ObjectId oid, String name, String technology, String bands_2G, String bands_3G, String bands_4G,
+                        String bands_5G, String speed, String announced, String status, String dimensions, String weight,
+                        String build, String SIM, String type, String size, String resolution, String protection,
+                        String OS, String chipset, String CPU, String GPU, String card_slot, String internal,
+                        String triple, String features, String video, String single, String loudspeaker,
+                        String jack_3_5mm, String WLAN, String bluetooth, String positioning, String NFC, String radio,
+                        String USB, String sensors, String charging, String colors, String models, String SAR,
+                        String SAR_EU, String price, String performance, String display, String camera,
+                        String battery_life) {
         Oid = oid;
         name = name;
         Technology = technology;

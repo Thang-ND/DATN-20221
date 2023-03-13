@@ -28,6 +28,7 @@ if __name__ == '__main__':
         newDf = preprocess.extractRamFromName(data)
         newDf = preprocess.extractRomFromName(newDf)
         newDf = preprocess.preprocessData(newDf, status=1)
+        newDf = preprocess.preprocessColor(newDf)
 
         newDf['store'] = 'thegioididong'
         # filename = date.today().strftime('tragopdidong-iphone'+"%Y%m%d.csv")

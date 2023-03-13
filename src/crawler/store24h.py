@@ -58,8 +58,8 @@ class Store24h(Crawler):
                     prices = [elm.get_attribute('innerHTML') for elm in p_elms]
                     roms = [elm.get_attribute('innerHTML') for elm in r_elms]
                     colors = [elm.get_attribute('innerHTML') for elm in c_elms]
-                    name = driver.find_element(By.XPATH, '//h1[@class="pull-left"]').get_attribute('innerHTML')
-
+                    # name = driver.find_element(By.XPATH, '//h1[@class="pull-left"]').get_attribute('innerHTML')
+                    name = driver.find_element(By.XPATH, '//*[@id="main_container"]/div/div[1]/div[1]/div[1]/h1').get_attribute('innerHTML')
                     for i in range(len(colors)):
                         for j in range(len(roms)):
                             product = {}
@@ -69,6 +69,7 @@ class Store24h(Crawler):
                             product['link'] = url
                             product['price'] = prices[j]
                             product['color'] = colors[i]
+                            #print(product)
                             self.producer.send(self.source, value=product)
                             #self.data.append(product)
                 except Exception as e:

@@ -77,6 +77,8 @@ class PreprocessData():
             df['color'] = df_obj.color.apply(lambda x: x.replace('\n', '').strip())
         except Exception as e:
             print(e)
+        df['rom'] = df['rom'].apply(lambda x: 0 if x == '' or x == 'unknown' or x is None else float(x))
+        df['ram'] = df['ram'].apply(lambda x: 0 if x == '' or x == 'unknown' or x is None else float(x))
         df.fillna('unknown', inplace=True)
         return df
 
@@ -104,6 +106,7 @@ class PreprocessData():
                 if df.loc[i, 'name'].upper().find(self.model[j]) != -1:
                     df.loc[i, 'name'] = self.model[j]
                     break
+    
         return df
     def preprocessColor(self, df):
         for i in range(len(df)):
@@ -117,4 +120,5 @@ class PreprocessData():
                 if self.color1[j] in df.loc[i, 'color'].upper():
                     df.loc[i, 'color'] = self.color2[j]
                     break
+
         return df 
